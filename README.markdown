@@ -1,7 +1,7 @@
 This is a simple demonstration application used in the [Jenkins: The Definitive Guide](http://wakaleo.com/books/jenkins-the-definitive-guide) book.
 
 ## Building the project
-
+this is java file
 The project is a simple multi-module Maven project. To build the whole project, just run `mvn install` from the root directory.
 
 ## Running the game
