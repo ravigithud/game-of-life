@@ -21,7 +21,7 @@ sh label: '', script: 'mvn install'
 stage ('Nexus storage')
 {
 steps {
-nexusPublisher nexusInstanceId: '9000', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/Complete Pipeline Project/gameoflife-web/target/.war']], mavenCoordinate: [artifactId: 'game-of-life', groupId: 'ADP', packaging: 'war', version: '$BUILD_ID']]]
+nexusPublisher nexusInstanceId: '9000', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/Complete Pipeline Project/gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'game-of-life', groupId: 'ADP', packaging: 'war', version: '$BUILD_ID']]]
 }
 }
 stage ('TomcatServer')
