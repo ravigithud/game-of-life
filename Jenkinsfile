@@ -42,7 +42,7 @@ nexusPublisher nexusInstanceId: '9000', nexusRepositoryId: 'releases', packages:
 stage ('TomcatServer')
 {
 steps {
-deploy adapters: [tomcat8(credentialsId: '123', path: '', url: 'http://15.206.125.145:8080/')], contextPath: null, war: '**/*.war'
+deploy adapters: [tomcat8(credentialsId: '123', path: '', url: 'http://13.233.123.231:8080/')], contextPath: null, war: '**/*.war'
     }
   }
  }
