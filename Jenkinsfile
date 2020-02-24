@@ -40,11 +40,11 @@ sh label: '', script: 'mvn install'
 nexusPublisher nexusInstanceId: '9000', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/COP/gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'game', groupId: 'oracle', packaging: 'war', version: '$BUILD_ID']]]
 }
 }
-//stage ('Deploy war')
-//{
-//steps {
-//sh label: '', script: 'deploy.yml'
-  //  }
-  //}
+stage ('Deploy war')
+{
+steps {
+sh label: '', script: 'deploy.yml'
+    }
+  }
  }
 }
