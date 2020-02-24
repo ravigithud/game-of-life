@@ -43,7 +43,7 @@ nexusPublisher nexusInstanceId: '9000', nexusRepositoryId: 'releases', packages:
 stage ('Deploy war')
 {
 steps {
-sh label: '', script: 'deploy.yml'
+sh label: '', script: 'ansible-playbook deploy.yml'
     }
   }
  }
