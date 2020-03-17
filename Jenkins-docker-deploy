@@ -26,7 +26,7 @@ stage('Docker image creation')
      steps 
      {
    sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
-                            docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravihithud/gameoflife-image:$BUILD_NUMBER
+                            docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravigithud/gameoflife-image:$BUILD_NUMBER
                             docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
       			}
 	 	}	
