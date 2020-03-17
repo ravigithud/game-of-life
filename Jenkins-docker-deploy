@@ -2,10 +2,11 @@ pipeline {
     agent any 
     tools { 
         maven 'Maven' 
-        }
-stages { 
     
-    stage('Git checkout') 
+    }
+stages { 
+     
+ stage('Git checkout') 
 { 
      steps 
 	 {
@@ -16,8 +17,23 @@ stages {
 stage('Maven conf')
 {
 steps {
-    sh label: '', script: 'mvn install'
+sh label: '', script: 'mvn install'
 }
+}
+stage('sonarqube') 
+{
+  environment 
+  {
+   scannerHome = tool 'sonarqube'
     }
-  }
+   steps {
+        withSonarQubeEnv('sonarqube') {
+       sh "${scannerHome}/bin/sonar-scanner"
+}
+    timeout(time: 5, unit: 'MINUTES') {
+     waitForQualityGate abortPipeline: true
+     }
+	     }
+      }
+}
 }
