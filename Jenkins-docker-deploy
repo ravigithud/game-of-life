@@ -20,20 +20,16 @@ steps {
 sh label: '', script: 'mvn install'
 }
 }
-stage('sonarqube') 
+	
+stage('Docker image creation') 
 {
-  environment 
-  {
-   scannerHome = tool 'sonarqube'
-    }
-   steps {
-        withSonarQubeEnv('sonarqube') {
-       sh "${scannerHome}/bin/sonar-scanner"
+     steps 
+     {
+   sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
+                            docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravihithud/gameoflife-image:$BUILD_NUMBER
+                            docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
+      			}
+	 	}	
+	}
 }
-    timeout(time: 5, unit: 'MINUTES') {
-     waitForQualityGate abortPipeline: true
-     }
-	     }
-      }
-}
-}
+
