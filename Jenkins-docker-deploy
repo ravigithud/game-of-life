@@ -21,15 +21,23 @@ sh label: '', script: 'mvn install'
 }
 }
 	
-stage('Docker image creation') 
-{
-     steps 
-     {
-   sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
-                            docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravi143/gameoflife-image:$BUILD_NUMBER
-                            docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
-      			}
-	 	}	
-	}
+	 stage('Docker image creation') 
+	 {
+      steps {
+        sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
+                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravihithud/gameoflife-image:$BUILD_NUMBER
+                                 docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
+      }
+ }
+	
+	stage('deploy as a container')
+	{
+	sshagent(['9000']) 
+	{
+       sh "ssh -o StrictHostkeyChecking=no ubuntu@13.232.8.52 docker rm -f gameoflifecontainer || true"
+       sh "ssh -o StrictHostkeyChecking=no ubuntu@13.232.8.52 docker run -d -p 8080:8080 --name myGame gameoflife-image:$BUILD_NUMBER " 
+          }
+		
+          }
+       }
 }
-
