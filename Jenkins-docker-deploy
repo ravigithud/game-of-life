@@ -21,7 +21,7 @@ sh label: '', script: 'mvn install'
 }
 }
 	
-	 stage('Docker image creation') 
+stage('Docker image creation') 
 	 {
       steps {
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
@@ -32,6 +32,7 @@ sh label: '', script: 'mvn install'
 	
 	stage('deploy as a container')
 	{
+	steps {   
 	sshagent(['9000']) 
 	{
        sh "ssh -o StrictHostkeyChecking=no ubuntu@13.232.8.52 docker rm -f gameoflifecontainer || true"
@@ -40,4 +41,5 @@ sh label: '', script: 'mvn install'
 		
           }
        }
+}
 }
