@@ -10,20 +10,20 @@ stages {
 { 
      steps 
 	 {
-	 git credentialsId: 'github', url: 'https://github.com/ravigithud/game-of-life.git'
+	 	git credentialsId: 'github', url: 'https://github.com/ravigithud/game-of-life.git'
 	 }
 	}
 
 stage('Maven conf')
 {
 steps {
-sh label: '', script: 'mvn install'
-}
+	sh label: '', script: 'mvn install'
+		}
 }
 	
 	 stage('Docker image creation') 
 	 {
-      steps {
+      		steps {
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
                                  docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravi143/gameoflife-image:$BUILD_NUMBER
                                  docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
@@ -47,7 +47,7 @@ sh label: '', script: 'mvn install'
 			}
 		}
 			
-		}
+	}
 	}
 			
 	
