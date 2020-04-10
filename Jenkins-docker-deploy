@@ -25,15 +25,15 @@ sh label: '', script: 'mvn install'
 	 {
       steps {
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
-                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravigithud/gameoflife-image:$BUILD_NUMBER
+                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/ravi143/gameoflife-image:$BUILD_NUMBER
                                  docker push docker.io/ravi143/gameoflife-image:$BUILD_NUMBER'''
       }
  }
 	
 	stage('update the image version')
 	{	
-	steps { 
-	sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
+		steps { 
+			sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
 		}
 	}
 	
@@ -41,7 +41,7 @@ sh label: '', script: 'mvn install'
 	{
 		steps
 			{
-			sh label: '', script: '''scp *.yml jenkins@52.66.209.46;/home/jenkins
+			sh label: '', script: '''scp *.yml jenkins@52.66.209.46:/home/jenkins
 			ssh jenkins@52.66.209.46 kubectl apply -f deploy.kube.yml
 			ssh jenkins@52.66.209.46 kubectl apply -f service.yml'''
 			}
