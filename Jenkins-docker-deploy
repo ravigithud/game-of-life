@@ -41,9 +41,9 @@ sh label: '', script: 'mvn install'
 	{
 		steps
 			{
-			sh label: '', script: '''scp *.yml jenkins@kubernetesMaster IP;/home/jenkins
-			ssh jenkins@Master IP kubectl apply -f deploy.kube.yml
-			ssh jenkins@Master IP kubectl apply -f service.yml'''
+			sh label: '', script: '''scp *.yml jenkins@52.66.209.46;/home/jenkins
+			ssh jenkins@52.66.209.46 kubectl apply -f deploy.kube.yml
+			ssh jenkins@52.66.209.46 kubectl apply -f service.yml'''
 			}
 		}
 			
