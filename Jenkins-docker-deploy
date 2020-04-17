@@ -41,9 +41,9 @@ steps {
 	{
 		steps
 			{
-			sh label: '', script: '''scp *.yml jenkins@13.235.244.141:/home/jenkins
-			ssh jenkins@13.235.244.141 kubectl apply -f deploy.kube.yml
-			ssh jenkins@13.235.244.141 kubectl apply -f service.yml'''
+			sh label: '', script: '''scp *.yml jenkins@13.235.244.230:/home/jenkins
+			ssh jenkins@13.235.244.230 kubectl apply -f deploy.kube.yml
+			ssh jenkins@13.235.244.230 kubectl apply -f service.yml'''
 			}
 		}
 			
