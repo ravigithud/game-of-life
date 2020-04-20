@@ -37,8 +37,8 @@ steps {
 	//	}
 	//}
 	
-	//stage('deploy the files to kubernetes')
-	//{
+	// stage('deploy the files to kubernetes')
+	// {
 	//	steps
 	//		{
 	//		sh label: '', script: '''scp *.yml jenkins@13.233.195.111:/home/jenkins
