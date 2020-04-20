@@ -30,22 +30,22 @@ steps {
       }
  }
 	
-	 stage('update the image version')
-	{	
-		steps { 
-			sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
-		}
-	}
+	 //stage('update the image version')
+	//{	
+	//	steps { 
+	//		sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
+	//	}
+	//}
 	
-	stage('deploy the files to kubernetes')
-	{
-		steps
-			{
-			sh label: '', script: '''scp *.yml jenkins@13.233.195.111:/home/jenkins
-			ssh jenkins@13.233.195.111 kubectl apply -f deploy.kube.yml
-			ssh jenkins@13.233.195.111 kubectl apply -f service.yml'''
-			}
-		}
+	//stage('deploy the files to kubernetes')
+	//{
+	//	steps
+	//		{
+	//		sh label: '', script: '''scp *.yml jenkins@13.233.195.111:/home/jenkins
+	//		ssh jenkins@13.233.195.111 kubectl apply -f deploy.kube.yml
+	//		ssh jenkins@13.233.195.111 kubectl apply -f service.yml'''
+	//		}
+	//	}
 			
 	}
 	}
